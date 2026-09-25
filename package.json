@@ -18,9 +18,11 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "lightningcss": "^1.33.0"
   },
   "dependencies": {
-    "@11ty/eleventy-plugin-rss": "^3.0.0"
+    "@11ty/eleventy-plugin-rss": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0"
   }
 }

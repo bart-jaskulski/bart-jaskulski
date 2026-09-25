@@ -21,8 +21,6 @@ last with `_bin`). Furthermore:
 > anything useful for comparisions other than exact (no case folding, etc)
 > equality. BINARY/BLOB should be usually be used instead CHAR+utf8; this stores
 > the bytes without any
-> checking. <sup><a href="#reference-1" aria-label="Reference 1">1</a></sup>
+> checking.[^1]
 
-<ol class="references">
-<li id="reference-1"><a href="https://mysql.rjweb.org/doc.php/charcoll">https://mysql.rjweb.org/doc.php/charcoll</a></li>
-</ol>
+[^1]: https://mysql.rjweb.org/doc.php/charcoll

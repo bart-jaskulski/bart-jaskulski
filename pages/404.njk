@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+title: Nothing is inscribed here
+description: The page you requested could not be found.
+permalink: 404.html
+eleventyExcludeFromCollections: true
+hideBack: true
+---
+<section class="unwritten-clearing" aria-labelledby="not-found-title">
+    <h1 id="not-found-title">
+        <span>Nothing has been</span>
+        <span>inscribed here.</span>
+    </h1>
+    <footer>
+        <nav class="routes" aria-label="Return to living content">
+            <a href="/">Home ↗</a>
+            <a href="/#work">Work ↗</a>
+            <a href="/writings/">Writing ↗</a>
+            <a href="mailto:{{ site.email }}">Contact ↗</a>
+        </nav>
+        {% set markClass = "seal" %}
+        {% include "mark.njk" %}
+    </footer>
+</section>

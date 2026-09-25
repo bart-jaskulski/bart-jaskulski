@@ -8,6 +8,21 @@
     <meta name="description" content="{{ description or site.description }}">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:title" content="{{ title or site.name }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:locale" content="{% if lang == 'pl' %}pl_PL{% else %}en_US{% endif %}">
+    <meta property="og:type" content="{{ ogType or 'website' }}">
+{% if ogType == 'article' %}
+    <meta property="article:published_time" content="{{ page.date | dateISO }}">
+    <meta property="article:author" content="{{ site.name }}">
+{% endif %}
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ title or site.name }}">
+    <meta name="twitter:description" content="{{ description or site.description }}">
     <link rel="preload" href="/assets/fonts/newsreader-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/literata-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/main.css">
@@ -15,8 +30,8 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="page">
-    <header class="top"><a class="name electric" href="/">{{ site.name }}</a>{% if page.url != '/' %}<a
-            class="back electric" href="/" aria-label="Back to home">← Home</a>{% endif %}</header>
+    <header class="top"><a class="name" href="/">{{ site.name }}</a>{% if page.url != '/' and not hideBack %}<a
+            class="back" href="/" aria-label="Back to home">← Home</a>{% endif %}</header>
     <main id="main">{{ content | safe }}</main>
     <footer><span>{{ site.name }}</span></footer>
 </div>

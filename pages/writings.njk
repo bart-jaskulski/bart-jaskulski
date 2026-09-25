@@ -4,10 +4,10 @@ title: Writing
 description: Longer questions and small reminders by Bartek Jaskulski.
 permalink: /writings/
 ---
-<div class="archive-opening">
+<header class="archive-opening">
     <h1>Writing</h1>
     {% include "mark.njk" %}
-</div>
+</header>
 {% for item in collections.writing %}
     {% set itemYear = item.date | year %}
     {% if loop.first or itemYear != (collections.writing[loop.index0 - 1].date | year) %}

@@ -4,19 +4,18 @@ layout: layouts/base.njk
 description: Work and writing by Bartek Jaskulski, from game discovery and local-first software to small technical notes.
 ---
 <section class="clearing" aria-label="Introduction">
-    <p class="bio">I build software with PHP, Go, and TypeScript. I lead engineering at WP Desk.</p>
+    <p>I build software with PHP, Go, and TypeScript. I lead engineering at WP Desk.</p>
     <h1><span>I follow questions</span><span>until they become useful.</span></h1>
-    <nav class="routes" aria-label="Explore the site"><a class="electric" href="#work">Work ↓</a><a class="electric"
-                                                                                                    href="#writing">Writing
-            ↓</a><a class="electric" href="mailto:{{ site.email }}">Contact ↗</a></nav>
+    <nav class="routes" aria-label="Explore the site"><a href="#work">Work ↓</a><a
+            href="#writing">Writing ↓</a><a href="mailto:{{ site.email }}">Contact ↗</a></nav>
     {% set markClass = "seal" %}
     {% include "mark.njk" %}
 </section>
-<section class="work-region" id="work" aria-label="Work">
+<section id="work" aria-label="Work">
     {% set featured = collections.work[0] %}
     {% set second = collections.work[1] %}
     <article class="featured-work">
-        <div class="work-heading"><h2>{% if featured.data.title_lines %}{% for line in featured.data.title_lines %}<span>{{ line }}</span>{% endfor %}{% else %}{{ featured.data.title }}{% endif %}</h2></div>
+        <h2>{% if featured.data.title_lines %}{% for line in featured.data.title_lines %}<span>{{ line }}</span>{% endfor %}{% else %}{{ featured.data.title }}{% endif %}</h2>
         <div class="work-story">
             <svg class="work-mark" viewBox="0 0 420 300" fill="none" aria-hidden="true">
                 <path d="M8 53 C89 22 129 118 208 117 C268 116 309 67 388 88 C309 74 265 126 205 130 C124 137 81 39 8 53Z"
@@ -32,30 +31,29 @@ description: Work and writing by Bartek Jaskulski, from game discovery and local
                 <circle cx="391" cy="164" r="5" fill="var(--blue)"/>
             </svg>
             <div class="prose">{{ featured.templateContent | safe }}</div>
-            <a class="route electric" href="{{ featured.data.url }}">{{ featured.data.link_label }} ↗</a>
+            <a class="route" href="{{ featured.data.url }}">{{ featured.data.link_label }} ↗</a>
         </div>
     </article>
     <article class="second-work">
         <h3>{{ second.data.title }}</h3>
         <div>{{ second.templateContent | safe }}</div>
-        <a class="electric" href="{{ second.data.url }}">{{ second.data.link_label }} ↗</a>
+        <a href="{{ second.data.url }}">{{ second.data.link_label }} ↗</a>
     </article>
     <div class="tertiary-work" aria-label="More work at WP Desk">
         {% for item in collections.work.slice(2) %}
         <article>
             <h3>{{ item.data.title }}</h3>
             <div>{{ item.templateContent | safe }}</div>
-            <a class="electric" href="{{ item.data.url }}">{{ item.data.link_label }} ↗</a>
+            <a href="{{ item.data.url }}">{{ item.data.link_label }} ↗</a>
         </article>
         {% endfor %}
     </div>
 </section>
-<section class="writing-region" id="writing" aria-labelledby="writing-title">
-    <div class="title-row"><h2 id="writing-title"><a class="electric" href="/writings/">Writing <span aria-hidden="true">↗</span></a>
-        </h2></div>
+<section id="writing" aria-labelledby="writing-title">
+    <h2 id="writing-title"><a href="/writings/">Writing <span aria-hidden="true">↗</span></a></h2>
     <div class="pieces">
         {% for item in collections.writing.slice(0, 3) %}
-        <article class="piece">
+        <article>
             <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
             {{ item.templateContent | firstParagraph | safe }}
             <time datetime="{{ item.date | dateISO }}">{{ item.date | dateLabel }}</time>
@@ -63,7 +61,7 @@ description: Work and writing by Bartek Jaskulski, from game discovery and local
         {% endfor %}
     </div>
 </section>
-<section class="closing" id="about"><h2>Some things need time. Some only need two sentences.</h2>
+<section id="about"><h2>Some things need time. Some only need two sentences.</h2>
     <div><p>I keep both here, alongside the software I make. If you want to talk about the work, write to me.</p><a
-                class="electric" href="mailto:{{ site.email }}">Contact me ↗</a></div>
+                href="mailto:{{ site.email }}">Contact me ↗</a></div>
 </section>
