@@ -9,3 +9,5 @@ we cannot rely on WP REST API directly.
 
 To mitigate this, you can hook into `rest_pre_serve_request` and handle REST
 server response yourself.
+
+#wordpress #php

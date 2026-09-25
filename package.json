@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Personal website & digital archive of Bartek Jaskulski",
   "type": "module",
+  "packageManager": "pnpm@12.5.1",
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",

@@ -1,4 +1,4 @@
-# Follow the rabbit hole
+# Why may I suck at learning/working?
 
 ## Pitfalls
 

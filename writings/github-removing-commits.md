@@ -18,3 +18,5 @@ git push --force
 ```
 
 [^1]: https://stackoverflow.com/a/32840254
+
+#git

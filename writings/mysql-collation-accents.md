@@ -24,3 +24,5 @@ last with `_bin`). Furthermore:
 > checking.[^1]
 
 [^1]: https://mysql.rjweb.org/doc.php/charcoll
+
+#db

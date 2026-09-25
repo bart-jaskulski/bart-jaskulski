@@ -15,3 +15,5 @@ gzip -d file
 # Decompress file, write to stdout
 gzip -dc file
 ```
+
+#linux
