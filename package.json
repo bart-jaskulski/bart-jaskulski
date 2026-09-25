@@ -1,0 +1,26 @@
+{
+  "name": "bart-jaskulski",
+  "version": "1.0.0",
+  "description": "Personal website & digital archive of Bartek Jaskulski",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "portfolio",
+    "systems-engineer",
+    "product-engineer",
+    "11ty"
+  ],
+  "author": "Bartek Jaskulski <bjaskulski@protonmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-rss": "^3.0.0"
+  }
+}

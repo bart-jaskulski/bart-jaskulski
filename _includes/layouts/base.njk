@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ lang or 'en' }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+    <link rel="preload" href="/assets/fonts/newsreader-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/literata-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+    <header class="top"><a class="name electric" href="/">{{ site.name }}</a>{% if page.url != '/' %}<a
+            class="back electric" href="/" aria-label="Back to home">← Home</a>{% endif %}</header>
+    <main id="main">{{ content | safe }}</main>
+    <footer><span>{{ site.name }}</span></footer>
+</div>
+</body>
+</html>

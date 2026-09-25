@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+---
+<article class="article">
+    <header class="article-head">
+        <div class="margin">
+            <time datetime="{{ page.date | dateISO }}">{{ page.date | dateLabel }}</time>
+            {% include "mark.njk" %}
+        </div>
+        <h1>{{ title }}</h1>
+    </header>
+    <div class="article-body">
+        <div class="prose">{{ content | safe }}</div>
+    </div>
+    <div class="article-end"><a class="electric" href="/writings/">← All writing</a></div>
+</article>
