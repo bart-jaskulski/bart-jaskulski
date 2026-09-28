@@ -25,15 +25,20 @@
     <meta name="twitter:description" content="{{ description or site.description }}">
     <link rel="preload" href="/assets/fonts/newsreader-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/literata-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="{{ '/css/main.css' | hash }}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="page">
-    <header class="top"><a class="name" href="/">{{ site.name }}</a>{% if page.url != '/' and not hideBack %}<a
+    <header class="top{% if writingNav %} writing-top{% endif %}"><a class="name" href="/">{{ site.name }}</a>{% if writingNav %}
+        <div class="writing-tools">
+            <search><form action="/search/" method="get"><input id="writing-search" name="q" type="search"
+                    aria-label="Search" placeholder="Search" autocomplete="off" spellcheck="false"></form></search>
+        </div>{% elif page.url != '/' and not hideBack %}<a
             class="back" href="/" aria-label="Back to home">← Home</a>{% endif %}</header>
     <main id="main">{{ content | safe }}</main>
     <footer><span>{{ site.name }}</span></footer>
 </div>
+{% if writingNav %}<script src="{{ '/assets/search.js' | hash }}" type="module"></script>{% endif %}
 </body>
 </html>

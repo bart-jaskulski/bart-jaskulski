@@ -10,4 +10,4 @@ const i = setInterval(
 );
 ```
 
-    #js
+#js

@@ -7,7 +7,7 @@ layout: layouts/base.njk
             <time datetime="{{ page.date | dateISO }}">{{ page.date | dateLabel }}</time>
             {% include "mark.njk" %}
         </div>
-        <h1>{{ title }}</h1>
+        <h1>{{ title | taggedTitle | safe }}</h1>
     </header>
     <div class="article-body">
         <div class="prose">{{ content | safe }}</div>

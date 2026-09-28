@@ -18,4 +18,4 @@ user-defined rules, but there's additional feature, I've just found out:
 collections. Besides simple organization of your search, you can also add custom
 prompt, which will apply to all threads started in a specific collection.
 
-    #ai #search
+#ai #search

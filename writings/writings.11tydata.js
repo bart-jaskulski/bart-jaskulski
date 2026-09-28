@@ -3,6 +3,7 @@ export default {
     date: "git Created",
     permalink: "/writings/{{ page.fileSlug }}/",
     ogType: "article",
+    writingNav: true,
     eleventyComputed: {
         date: (data) => data.page.date
     }
