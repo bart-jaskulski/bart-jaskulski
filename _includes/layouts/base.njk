@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
     <title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
-    <meta name="description" content="{{ description or site.description }}">
+    <meta name="description" content="{{ (description or (site.description | escape)) | striptags | safe }}">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
 
     <meta property="og:site_name" content="{{ site.name }}">
     <meta property="og:title" content="{{ title or site.name }}">
-    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:description" content="{{ (description or (site.description | escape)) | striptags | safe }}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:locale" content="{% if lang == 'pl' %}pl_PL{% else %}en_US{% endif %}">
     <meta property="og:type" content="{{ ogType or 'website' }}">
@@ -22,7 +22,7 @@
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ title or site.name }}">
-    <meta name="twitter:description" content="{{ description or site.description }}">
+    <meta name="twitter:description" content="{{ (description or (site.description | escape)) | striptags | safe }}">
     <link rel="preload" href="/assets/fonts/newsreader-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/literata-roman.latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/css/main.css' | hash }}">
@@ -32,12 +32,24 @@
 <div class="page">
     <header class="top{% if writingNav %} writing-top{% endif %}"><a class="name" href="/">{{ site.name }}</a>{% if writingNav %}
         <div class="writing-tools">
+            <button class="search-toggle" type="button" aria-label="Open search" aria-expanded="false" aria-controls="writing-search" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle class="search-icon" cx="11" cy="11" r="8"></circle><path class="search-icon" d="m21 21-4.3-4.3"></path>
+                    <path class="close-icon" d="m6 6 12 12M18 6 6 18"></path>
+                </svg>
+            </button>
             <search><form action="/search/" method="get"><input id="writing-search" name="q" type="search"
                     aria-label="Search" placeholder="Search" autocomplete="off" spellcheck="false"></form></search>
         </div>{% elif page.url != '/' and not hideBack %}<a
             class="back" href="/" aria-label="Back to home">← Home</a>{% endif %}</header>
     <main id="main">{{ content | safe }}</main>
-    <footer><span>{{ site.name }}</span></footer>
+    <footer>
+        <span>{{ site.name }}</span>
+        <nav class="footer-links" aria-label="Contact and profiles">
+            <a href="mailto:{{ site.email }}" aria-label="Email {{ site.name }}" title="Email">{% include "icons/mail.svg" %}</a>
+            <a href="{{ site.github }}" aria-label="{{ site.name }} on GitHub" title="GitHub">{% include "icons/github.svg" %}</a>
+        </nav>
+    </footer>
 </div>
 {% if writingNav %}<script src="{{ '/assets/search.js' | hash }}" type="module"></script>{% endif %}
 </body>

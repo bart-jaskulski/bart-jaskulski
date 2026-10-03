@@ -10,10 +10,7 @@ eleventyComputed:
 eleventyExcludeFromCollections: true
 writingNav: true
 ---
-<header class="archive-opening">
-    <h1>#{{ tag }}</h1>
-    {% include "mark.njk" %}
-</header>
+{% include "archive-opening.njk" %}
 {% set entries = collections.taggedWriting[tag] %}
 {% for item in entries %}
     {% set itemYear = item.date | year %}

@@ -1,6 +1,26 @@
 const input = document.querySelector("#writing-search");
 const status = document.querySelector("#search-status");
 const results = document.querySelector("#search-results");
+const header = document.querySelector(".writing-top");
+const toggle = document.querySelector(".search-toggle");
+toggle.hidden = false;
+header.classList.add("search-ready");
+function setSearchOpen(open) {
+    header.classList.toggle("search-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close search" : "Open search");
+}
+toggle.addEventListener("click", () => {
+    const open = !header.classList.contains("search-open");
+    setSearchOpen(open);
+    if (open) requestAnimationFrame(() => input.focus());
+});
+input.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        setSearchOpen(false);
+        toggle.focus();
+    }
+});
 const fold = text => text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
 const DEBOUNCE_DELAY = 500;
 let entries;
@@ -55,6 +75,7 @@ function search() {
 
 if (results) {
     input.value = new URLSearchParams(location.search).get("q") || "";
+    if (input.value) setSearchOpen(true);
     if (input.value) input.focus({ preventScroll: true });
     input.addEventListener("input", () => {
         const q = input.value.trim();

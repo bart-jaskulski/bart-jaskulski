@@ -7,7 +7,7 @@ description: Work and writing by Bartek Jaskulski, from game discovery and local
     <p>I build software with PHP, Go, and TypeScript. I lead engineering at WP Desk.</p>
     <h1><span>I follow questions</span><span>until they become useful.</span></h1>
     <nav class="routes" aria-label="Explore the site"><a href="#work">Work ↓</a><a
-            href="#writing">Writing ↓</a><a href="mailto:{{ site.email }}">Contact ↗</a></nav>
+            href="/writings/">Writing ↗</a><a href="/audiolog/">Audiolog ↗</a></nav>
     {% set markClass = "seal" %}
     {% include "mark.njk" %}
 </section>
@@ -15,27 +15,20 @@ description: Work and writing by Bartek Jaskulski, from game discovery and local
     {% set featured = collections.work[0] %}
     {% set second = collections.work[1] %}
     <article class="featured-work">
-        <h2>{% if featured.data.title_lines %}{% for line in featured.data.title_lines %}<span>{{ line }}</span>{% endfor %}{% else %}{{ featured.data.title }}{% endif %}</h2>
+        <div class="work-heading">
+            {% include "marks/picknext.svg" %}
+            <h2>{% if featured.data.title_lines %}{% for line in featured.data.title_lines %}<span>{{ line }}</span>{% endfor %}{% else %}{{ featured.data.title }}{% endif %}</h2>
+        </div>
         <div class="work-story">
-            <svg class="work-mark" viewBox="0 0 420 300" fill="none" aria-hidden="true">
-                <path d="M8 53 C89 22 129 118 208 117 C268 116 309 67 388 88 C309 74 265 126 205 130 C124 137 81 39 8 53Z"
-                      fill="currentColor" opacity=".45"/>
-                <path d="M4 54 C83 36 127 116 207 122 C272 128 311 70 387 88 C316 82 269 139 204 137 C123 134 81 43 4 54Z"
-                      fill="currentColor" opacity=".38"/>
-                <path d="M6 147 C79 125 128 178 204 172 C271 167 303 154 384 161 C310 164 273 183 203 185 C129 188 82 134 6 147Z"
-                      fill="currentColor" opacity=".6"/>
-                <path d="M9 234 C81 252 133 203 207 215 C274 227 314 212 383 223 C316 223 273 239 207 229 C129 218 81 264 9 234Z"
-                      fill="currentColor" opacity=".47"/>
-                <path d="M13 62 C79 41 128 128 207 131 C267 134 314 84 380 91 M16 155 C80 143 132 191 204 182 C275 173 318 164 383 167 M16 239 C84 250 131 211 207 224 C276 234 323 219 386 224"
-                      stroke="currentColor" stroke-width="1.2" opacity=".7"/>
-                <circle cx="391" cy="164" r="5" fill="var(--blue)"/>
-            </svg>
             <div class="prose">{{ featured.templateContent | safe }}</div>
             <a class="route" href="{{ featured.data.url }}">{{ featured.data.link_label }} ↗</a>
         </div>
     </article>
     <article class="second-work">
-        <h3>{{ second.data.title }}</h3>
+        <div class="work-heading">
+            {% include "marks/tildom.svg" %}
+            <h3>{{ second.data.title }}</h3>
+        </div>
         <div>{{ second.templateContent | safe }}</div>
         <a href="{{ second.data.url }}">{{ second.data.link_label }} ↗</a>
     </article>
@@ -52,16 +45,12 @@ description: Work and writing by Bartek Jaskulski, from game discovery and local
 <section id="writing" aria-labelledby="writing-title">
     <h2 id="writing-title"><a href="/writings/">Writing <span aria-hidden="true">↗</span></a></h2>
     <div class="pieces">
-        {% for item in collections.writing.slice(0, 3) %}
+        {% for item in collections.writing.slice(0, 6) %}
         <article>
             <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
-            {{ item.templateContent | firstParagraph | safe }}
+            {% if item.data.description %}<p>{{ item.data.description | safe }}</p>{% endif %}
             <time datetime="{{ item.date | dateISO }}">{{ item.date | dateLabel }}</time>
         </article>
         {% endfor %}
     </div>
-</section>
-<section id="about"><h2>Some things need time. Some only need two sentences.</h2>
-    <div><p>I keep both here, alongside the software I make. If you want to talk about the work, write to me.</p><a
-                href="mailto:{{ site.email }}">Contact me ↗</a></div>
 </section>
