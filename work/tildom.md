@@ -5,9 +5,6 @@ url: https://tildom.app/
 link_label: Explore tildom
 ---
 
-I’m building a family of local-first tools for the things I want to keep close:
-reading, tasks, relationships, and conversations.
+My response to chronically losing valuable bookmarks. Others would use a credible bookmark manager service; I built a web PWA with in-browser WASM sqlite and E2EE accountless sync between devices with a dumb server relay (talking about buzzwords...).
 
-The apps keep their core data in browser-local SQLite.
-
-Optional network features sit across explicit boundaries.
+The idea of local-first, small utility apps grew on me, so I kept expanding the tildom suite around this technology. No data yet to be lost (I keep three devices synced to the relay).

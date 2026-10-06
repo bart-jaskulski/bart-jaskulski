@@ -5,9 +5,10 @@ url: https://wordpress.org/plugins/shopmagic-for-woocommerce/
 link_label: View the plugin
 ---
 
-At WP Desk, I work on email automation for WooCommerce stores.
+I work on ShopMagic at WP Desk, building automations for WooCommerce stores.
 
-ShopMagic combines events, optional filters, and actions to create follow-ups
-and notifications.
+One thing I’ve added is an AI-powered automation creator: type what you want
+to happen, and it gives you a ready-to-use configuration.
 
-Its automations run inside WordPress and WooCommerce.
+It works with the same events, filters, and actions you can configure yourself
+inside WordPress.

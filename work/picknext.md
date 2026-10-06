@@ -6,9 +6,8 @@ url: https://picknext.games/
 link_label: Visit picknext.games
 ---
 
-I made a small game discovery engine that starts with how someone feels, then
-brings one recommendation forward.
+A curated catalog of games that I deem great, disguised as recommendation engine.
 
-A curated catalogue and experiential profiles support the match.
+Truly astonishing games tailored to your taste. Each title is represented as 30-dimensional vector. Your choices shape a taste centroid, your words influence a roll and a root mean square error magic decides on the next recommendation.
 
-Human-written critiques remain the authority behind each game.
+Delivered with performance obsession in sub 200ms to next recommendation roll; smart ahead-of-time preloading and zero cache. (Fine, fine, it's not that hard, this is a small project after all).

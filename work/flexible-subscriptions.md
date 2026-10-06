@@ -5,10 +5,11 @@ url: https://wordpress.org/plugins/flexible-subscriptions/
 link_label: View the plugin
 ---
 
-At WP Desk, I work on a WooCommerce plugin for selling products on recurring
-schedules.
+At WP Desk, I work on Flexible Subscriptions, an alternative to WooCommerce
+Subscriptions.
 
-It supports simple and variable subscriptions, with billing intervals, trials,
-and sign-up fees.
+I want to challenge its position with another option for stores selling on
+recurring schedules.
 
-The public plugin listing documents the current features and releases.
+The plugin handles recurring billing, trials, and sign-up fees for simple and
+variable subscriptions.

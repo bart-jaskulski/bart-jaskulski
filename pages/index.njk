@@ -1,11 +1,11 @@
 ---
 permalink: /
 layout: layouts/base.njk
-description: Work and writing by Bartek Jaskulski, from game discovery and local-first software to small technical notes.
+description: I build software with PHP, TypeScript and occasionally Go. Tech Lead @ WP Desk
 ---
 <section class="clearing" aria-label="Introduction">
-    <p>I build software with PHP, Go, and TypeScript. I lead engineering at WP Desk.</p>
-    <h1><span>I follow questions</span><span>until they become useful.</span></h1>
+    <p>I build software with PHP, TypeScript and occasionally Go. Tech Lead @ WP Desk</p>
+    <h1><span>Things I build.</span><span>Things I write down.</span></h1>
     <nav class="routes" aria-label="Explore the site"><a href="#work">Work ↓</a><a
             href="/writings/">Writing ↗</a><a href="/audiolog/">Audiolog ↗</a></nav>
     {% set markClass = "seal" %}
@@ -48,7 +48,7 @@ description: Work and writing by Bartek Jaskulski, from game discovery and local
         {% for item in collections.writing.slice(0, 6) %}
         <article>
             <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
-            {% if item.data.description %}<p>{{ item.data.description | safe }}</p>{% endif %}
+            <p>{{ item.data.description | safe }}</p>
             <time datetime="{{ item.date | dateISO }}">{{ item.date | dateLabel }}</time>
         </article>
         {% endfor %}
