@@ -5,12 +5,17 @@ description: I build software with PHP, TypeScript and occasionally Go. Tech Lea
 ---
 <section class="clearing" aria-label="Introduction">
     <p>I build software with PHP, TypeScript and occasionally Go. Tech Lead @ WP Desk</p>
-    <h1><span>Things I build.</span><span>Things I write down.</span></h1>
+    <div class="monostich">
+        <h1 aria-label="Break things. Reassemble."><span aria-hidden="true">Break things.</span><span aria-hidden="true">Reassemble.</span></h1>
+        {% include "monostich.svg" %}
+        <p class="monostich-credit"></p>
+    </div>
     <nav class="routes" aria-label="Explore the site"><a href="#work">Work ↓</a><a
             href="/writings/">Writing ↗</a><a href="/audiolog/">Audiolog ↗</a></nav>
     {% set markClass = "seal" %}
     {% include "mark.njk" %}
 </section>
+<script src="{{ '/assets/monostich.js' | hash }}" type="module"></script>
 <section id="work" aria-label="Work">
     {% set featured = collections.work[0] %}
     {% set second = collections.work[1] %}

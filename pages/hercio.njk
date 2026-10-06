@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+title: Which Hercio are you today?
+description: Nine moods, one Hercio.
+permalink: /hercio/
+eleventyExcludeFromCollections: true
+moods:
+  - image: hercio-8
+    caption: Reviewing your proposal
+    alt: Hercio resting on a sofa with oversized glasses on his head.
+  - image: hercio-2
+    caption: Overthinking
+    alt: Hercio looking sideways with his head lowered.
+  - image: hercio-5
+    caption: Unavailable
+    alt: Hercio asleep across Bartek's head.
+  - image: hercio-9
+    caption: Cautiously optimistic
+    alt: Hercio looking straight at the camera with his ears raised.
+  - image: hercio-6
+    caption: Rawwwr
+    alt: Hercio pressing his paw against Bartek's face.
+  - image: hercio-1
+    caption: Judgmental
+    alt: A close-up of Hercio lying in bed with sleepy eyes.
+  - image: hercio-4
+    caption: Above it all
+    alt: Hercio tilting his nose upward from the pillows.
+  - image: hercio-7
+    caption: Just checking in
+    alt: Hercio leaning close to the camera, nose first.
+  - image: hercio-3
+    caption: Looking into it
+    alt: An extreme close-up of Hercio's eye.
+---
+<section class="hercio" aria-labelledby="hercio-title">
+    <h1 id="hercio-title">Which Hercio are you today?</h1>
+    <div class="hercio-moods">
+        {% for mood in moods %}
+        <figure class="hercio-mood">
+            <img src="/assets/hercio/{{ mood.image }}.webp" alt="{{ mood.alt }}" width="640" height="640"{% if loop.index > 3 %} loading="lazy"{% endif %} decoding="async">
+            <figcaption class="hercio-caption">{{ loop.index }}. {{ mood.caption }}</figcaption>
+        </figure>
+        {% endfor %}
+    </div>
+</section>
+<p class="hercio-disclaimer"><em>I also have another dog, but he didn't consent to having his pictures online.</em></p>
