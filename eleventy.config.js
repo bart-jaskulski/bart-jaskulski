@@ -2,12 +2,20 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import { transform } from "lightningcss";
 import site from "./_data/site.js";
 import markdownPlugin from "./_config/markdown.js";
 
 export default function (config) {
     config.addPlugin(markdownPlugin);
+    config.addPlugin(eleventyImageTransformPlugin, {
+        formats: ["webp"],
+        widths: [160, 320, 640],
+        htmlOptions: {
+            imgAttributes: { decoding: "async" }
+        }
+    });
     config.addPlugin(feedPlugin, {
         collection: { name: "writingFeed" },
         metadata: {

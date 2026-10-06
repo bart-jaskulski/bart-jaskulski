@@ -38,7 +38,7 @@ moods:
     <div class="hercio-moods">
         {% for mood in moods %}
         <figure class="hercio-mood">
-            <img src="/assets/hercio/{{ mood.image }}.webp" alt="{{ mood.alt }}" width="640" height="640"{% if loop.index > 3 %} loading="lazy"{% endif %} decoding="async">
+            <img src="/assets/hercio/{{ mood.image }}.webp" alt="{{ mood.alt }}" sizes="(max-width: 700px) calc(50vw - clamp(20px, 4.3vw, 74px) - 8px), min(352px, calc((100vw - clamp(40px, 8.6vw, 148px) - 64px) / 3))" loading="eager">
             <figcaption class="hercio-caption">{{ loop.index }}. {{ mood.caption }}</figcaption>
         </figure>
         {% endfor %}
