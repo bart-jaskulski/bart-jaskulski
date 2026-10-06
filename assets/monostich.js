@@ -19,6 +19,7 @@ const passages = [
     }
 ];
 const timing = { rest: 5000, linePause: 288, strokeSpeed: .16, penLift: 18, wordPause: 96 };
+const INITIAL_DELAY = 250;
 
 const gallery = document.querySelector('.monostich');
 const heading = gallery.querySelector('h1');
@@ -37,7 +38,7 @@ function settle() {
 function write(pause) {
     settle();
     if (reduced.matches) return 0;
-    let delay = 96;
+    let delay = recent.length === 1 ? INITIAL_DELAY : 96;
     let end = 0;
     const strokes = [...svg.querySelectorAll('.pen-stroke')];
     for (const row of ['0', '1']) {
@@ -65,7 +66,7 @@ function write(pause) {
 
 function schedule(writingTime = 0) {
     clearTimeout(timer);
-    if (visible && !document.hidden && !gallery.matches(':focus-within')) {
+    if (recent.length && visible && !document.hidden && !gallery.matches(':focus-within')) {
         timer = setTimeout(next, timing.rest + writingTime);
     }
 }
@@ -105,7 +106,10 @@ function next() {
     return writingTime;
 }
 
-const initialWritingTime = next();
+let initialWritingTime = 0;
+const start = () => { initialWritingTime = next(); };
+if (document.readyState === 'complete') start();
+else window.addEventListener('load', start, { once: true });
 let firstObservation = true;
 reduced.addEventListener('change', settle);
 document.addEventListener('visibilitychange', () => {
