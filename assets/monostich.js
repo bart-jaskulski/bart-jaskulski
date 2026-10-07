@@ -19,15 +19,15 @@ const passages = [
     }
 ];
 const timing = { rest: 5000, linePause: 288, strokeSpeed: .16, penLift: 18, wordPause: 96 };
-const INITIAL_DELAY = 250;
 
 const gallery = document.querySelector('.monostich');
 const heading = gallery.querySelector('h1');
 const credit = gallery.querySelector('.monostich-credit');
 let svg = gallery.querySelector('svg');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-let recent = [];
-let remaining = passages.map((_, index) => index);
+const arriving = document.documentElement.classList.contains('monostich-pending') && !reduced.matches;
+let recent = arriving ? [] : [0];
+let remaining = passages.map((_, index) => index).filter(index => !recent.includes(index));
 let visible = false;
 let timer;
 
@@ -38,7 +38,7 @@ function settle() {
 function write(pause) {
     settle();
     if (reduced.matches) return 0;
-    let delay = recent.length === 1 ? INITIAL_DELAY : 96;
+    let delay = recent.length === 1 ? 250 : 96;
     let end = 0;
     const strokes = [...svg.querySelectorAll('.pen-stroke')];
     for (const row of ['0', '1']) {
@@ -106,10 +106,10 @@ function next() {
     return writingTime;
 }
 
-let initialWritingTime = 0;
-const start = () => { initialWritingTime = next(); };
-if (document.readyState === 'complete') start();
-else window.addEventListener('load', start, { once: true });
+// Prepare the first strokes before exposing the randomly selected passage.
+const initialWritingTime = arriving ? next() : 0;
+clearTimeout(window.monostichFallback);
+document.documentElement.classList.remove('monostich-pending');
 let firstObservation = true;
 reduced.addEventListener('change', settle);
 document.addEventListener('visibilitychange', () => {
