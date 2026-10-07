@@ -1,6 +1,6 @@
 # Speak (in your words) when spoken to
 
-I love that more and more voices online (at least those, who I happen to read by accident on Hacker News or Lobste.rs) emphasize that one should not simply be human proxy meat.
+I love that more and more voices online (at least those, who I happen to read by accident on Hacker News or Lobste.rs) emphasize that one should not simply be human proxy meat[^1][^2].
 
 It truly dreads me, how on the course of few past years, with exponential degradation over less than last 12 months, people loose the ability to think critically. Actually, this seems to proceed inversly proportional to the technological advancements. I may sound like an old prick, praising the past, when everything was simpler, and scolding the rotten present. And maybe I am to some level. But I am definitely put up with reading verbatim citations from llm tools. Some stress, that if they wanted to read a language model's opinion on the matter, they would've promted it theirselves. For me this is not the point. I feel insulted too. Yet, the real reason it itches me, is the fact that you waste my time and neither of us learns anything.
 
@@ -21,3 +21,6 @@ Succumbing to the path of least resistance is what I fear the most and what frus
 ---
 
 And if I ever use the AI, when writing to you, I'll inform you, along with an explanation on why I couldn't write it myself and **sincerest apologies**.
+
+[^1]: https://gruhn.me/blog/2026-08-03
+[^2]: https://blog.colinbreck.com/i-dont-want-to-read-what-you-didnt-write
