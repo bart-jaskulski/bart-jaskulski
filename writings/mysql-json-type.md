@@ -5,9 +5,10 @@ have `JSON` data type. It's convenient instead of serializing data to string.
 Also comes with a bunch of functions (didn't care about performance yet),
 capable of querying JSON data inside column.
 
-ID | json_column
-=================================
-1 | {query: "my query"} 2 | {query: "not query"}
+| ID | json_column |
+| --- | --- |
+| 1 | `{query: "my query"}` |
+| 2 | `{query: "not query"}` |
 
 ```sql
 SELECT * WHERE JSON_EXTRACT(json_column, "$.query) = 'my query'

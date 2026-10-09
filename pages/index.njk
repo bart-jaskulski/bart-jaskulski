@@ -25,7 +25,7 @@ description: I build software with PHP, TypeScript and occasionally Go. Tech Lea
             <h2>{% if featured.data.title_lines %}{% for line in featured.data.title_lines %}<span>{{ line }}</span>{% endfor %}{% else %}{{ featured.data.title }}{% endif %}</h2>
         </div>
         <div class="work-story">
-            <div class="prose">{{ featured.templateContent | safe }}</div>
+            <div>{{ featured.templateContent | safe }}</div>
             <a class="route" href="{{ featured.data.url }}">{{ featured.data.link_label }} ↗</a>
         </div>
     </article>

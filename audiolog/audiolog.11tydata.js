@@ -1,10 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
 import { parseFile } from "music-metadata";
-
-const execFileAsync = promisify(execFile);
 
 function audioTime(seconds) {
     const total = Math.floor(seconds || 0);
@@ -18,19 +14,20 @@ export default async function () {
         .filter(file => file.isFile() && /\.mp3$/i.test(file.name)
             && (process.env.ELEVENTY_RUN_MODE !== "build" || !file.name.startsWith("_")))
         .map(async file => {
-            const { common, format } = await parseFile(path.join(directory, file.name), {
+            const { common, format, native } = await parseFile(path.join(directory, file.name), {
                 duration: true,
                 skipCovers: true
             });
-            const { stdout } = await execFileAsync("git", [
-                "log", "--diff-filter=A", "--follow", "-1", "--format=%at", "--", file.name
-            ], { cwd: directory });
-            const date = stdout.trim() ? new Date(Number(stdout.trim()) * 1000).toISOString().slice(0, 10) : "";
+            const date = common.date?.trim().slice(0, 10) || String(common.year || "");
             return {
                 title: common.title?.trim() || file.name.replace(/\.mp3$/i, "").replace(/[-_]+/g, " "),
                 comment: common.comment?.filter(comment => !/^iTun/i.test(comment.descriptor || ""))
-                    .map(comment => comment.text?.trim()).find(Boolean) || "",
+                    .map(comment => comment.text?.trim()).find(Boolean)
+                    || Object.values(native).flat().find(tag => /^TXXX:comment$/i.test(tag.id))?.value?.trim() || "",
                 date,
+                dateLabel: /^\d{4}-\d{2}-\d{2}$/.test(date)
+                    ? new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })
+                    : date,
                 duration: audioTime(format.duration),
                 durationSeconds: format.duration || 0,
                 url: `/audiolog/${encodeURIComponent(file.name)}`,

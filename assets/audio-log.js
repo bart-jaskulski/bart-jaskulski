@@ -19,7 +19,7 @@ class AudioLog extends HTMLElement {
         this.enhanced = true;
         const audio = this.querySelector("audio");
         const controls = this.querySelector(".audio-controls");
-        const button = controls.querySelector("button");
+        const button = controls.querySelector(".audio-play");
         const seek = controls.querySelector('input[type="range"]');
         const clock = controls.querySelector(".audio-time");
         const skipButtons = controls.querySelectorAll("[data-skip]");
@@ -64,13 +64,16 @@ class AudioLog extends HTMLElement {
         const update = () => {
             const duration = Number.isFinite(audio.duration) ? audio.duration : initialDuration;
             const currentTime = audio.readyState ? audio.currentTime : position;
+            const elapsed = time(currentTime / audio.playbackRate);
+            const total = time(duration / audio.playbackRate);
             seek.disabled = !duration || !audio.seekable.length;
             skipButtons.forEach(skip => { skip.disabled = seek.disabled; });
             seek.max = duration;
             seek.value = currentTime;
-            seek.setAttribute("aria-valuetext", `${time(currentTime)} of ${time(duration)}`);
-            clock.textContent = duration ? `${time(currentTime)} / ${time(duration)}` : initialClock.replace("0:00", time(position));
-            button.textContent = audio.paused ? "Play" : "Pause";
+            seek.setAttribute("aria-valuetext", `${elapsed} of ${total} at ${audio.playbackRate} times speed`);
+            clock.textContent = duration ? `${elapsed} / ${total}` : initialClock.replace("0:00", elapsed);
+            button.querySelector('[data-icon="play"]').hidden = !audio.paused;
+            button.querySelector('[data-icon="pause"]').hidden = audio.paused;
             button.setAttribute("aria-label", `${audio.paused ? "Play" : "Pause"} ${audio.getAttribute("aria-label")}`);
             if (session && activeAudio === audio) {
                 session.playbackState = audio.ended ? "none" : audio.paused ? "paused" : "playing";
@@ -110,8 +113,8 @@ class AudioLog extends HTMLElement {
                 const actions = {
                     play,
                     pause: () => audio.pause(),
-                    seekbackward: ({ seekOffset = 15 }) => seekTo(audio.currentTime - seekOffset),
-                    seekforward: ({ seekOffset = 15 }) => seekTo(audio.currentTime + seekOffset),
+                    seekbackward: ({ seekOffset = 10 }) => seekTo(audio.currentTime - seekOffset),
+                    seekforward: ({ seekOffset = 10 }) => seekTo(audio.currentTime + seekOffset),
                     seekto: ({ seekTime }) => seekTo(seekTime)
                 };
                 for (const [action, handler] of Object.entries(actions)) {

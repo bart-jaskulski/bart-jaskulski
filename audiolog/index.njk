@@ -7,19 +7,26 @@ pageMark: marks/voice.svg
 ---
 {% include "archive-opening.njk" %}
 <section class="search-area" aria-label="Recordings">
-    <ol class="search-results audio-list">
+    <ol class="audio-list">
         {% for recording in recordings %}
         <li>
             <h2 id="recording-{{ loop.index }}">{{ recording.title | escape }}</h2>
-            {% if recording.date %}<p class="audio-date">{{ recording.date | escape }}</p>{% endif %}
+            {% if recording.date %}<p class="audio-date"><time datetime="{{ recording.date | escape }}">{{ recording.dateLabel | escape }}</time></p>{% endif %}
             {% if recording.comment %}<p>{{ recording.comment | escape }}</p>{% endif %}
             <audio-log aria-labelledby="recording-{{ loop.index }}" data-author="{{ site.name | escape }}">
                 <audio controls preload="none" aria-label="{{ recording.title | escape }}"
                        src="{{ recording.url | escape }}"></audio>
                 <div class="audio-controls" hidden>
-                    <button class="audio-play" type="button" aria-label="Play {{ recording.title | escape }}">Play</button>
                     <input type="range" min="0" max="{{ recording.durationSeconds }}" value="0" step="1" disabled
                            aria-label="Seek in {{ recording.title | escape }}">
+                    <div class="audio-transport" role="group" aria-label="Playback controls">
+                        <button type="button" data-skip="-10" aria-label="Back 10 seconds" title="Back 10 seconds" disabled>{% include "icons/rotate-ccw.svg" %}</button>
+                        <button class="audio-play" type="button" aria-label="Play {{ recording.title | escape }}">
+                            <span data-icon="play">{% include "icons/play.svg" %}</span>
+                            <span data-icon="pause" hidden>{% include "icons/pause.svg" %}</span>
+                        </button>
+                        <button type="button" data-skip="10" aria-label="Forward 10 seconds" title="Forward 10 seconds" disabled>{% include "icons/rotate-cw.svg" %}</button>
+                    </div>
                     <div class="audio-options">
                         <div class="audio-speed" role="radiogroup" aria-label="Playback speed">
                             {% set recordingIndex = loop.index %}
@@ -27,10 +34,6 @@ pageMark: marks/voice.svg
                             <label><input type="radio" name="audio-speed-{{ recordingIndex }}" value="{{ speed }}"{% if speed == 1 %} checked{% endif %}>
                                 <span>{{ speed }}×</span></label>
                             {% endfor %}
-                        </div>
-                        <div class="audio-skip">
-                            <button type="button" data-skip="-15" aria-label="Back 15 seconds" title="Back 15 seconds" disabled>{% include "icons/rotate-ccw.svg" %}</button>
-                            <button type="button" data-skip="15" aria-label="Forward 15 seconds" title="Forward 15 seconds" disabled>{% include "icons/rotate-cw.svg" %}</button>
                         </div>
                         <span class="audio-time">0:00 / {{ recording.duration }}</span>
                     </div>
