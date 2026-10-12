@@ -212,6 +212,10 @@
         text-underline-offset: .2em;
     }
 
+    .link-arrow {
+        color: var(--blue);
+    }
+
     a:hover {
         color: var(--blue);
         text-decoration: underline;
@@ -812,6 +816,10 @@
         }
     }
 
+    #work :is(.work-story > a, .second-work > a, .tertiary-work a) {
+        color: var(--blue);
+    }
+
     .featured-work {
         position: relative;
         inline-size: min(69%, 920px);
@@ -1344,9 +1352,14 @@
         }
     }
 
+    .post .article-body a {
+        text-decoration-color: var(--blue);
+    }
+
     .post .article-body a[href^="/tags/"], .post h1 a[href^="/tags/"] {
         text-decoration: underline;
-        text-decoration-color: var(--rule);
+        color: var(--blue);
+        text-decoration-color: var(--blue);
         text-decoration-thickness: 1px;
 
         &:hover, &:focus-visible {
@@ -1451,6 +1464,7 @@
             align-self: start;
             margin: var(--space-3) 0 0;
             font: 400 clamp(2.125rem, 4vw, 3.375rem)/1 var(--display);
+            color: var(--blue);
 
             @media (max-width: 760px) {
                 position: static;
@@ -1826,6 +1840,35 @@
 
     }
 
+    .audio-controls .audio-play {
+
+        & .audio-play-icon path {
+            transition: d 120ms var(--ease-out);
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+
+        & .audio-play-icon path:first-child {
+            d: path("M6 4 L6 12 L6 20");
+        }
+
+        & .audio-play-icon path:last-child {
+            d: path("M6 4 L20 12 L6 20");
+        }
+
+        &[data-playing="true"] .audio-play-icon {
+            & path:first-child {
+                d: path("M8 4 L8 12 L8 20");
+            }
+
+            & path:last-child {
+                d: path("M16 4 L16 12 L16 20");
+            }
+        }
+    }
+
     .audio-transport {
         display: flex;
         justify-content: center;
@@ -1843,9 +1886,6 @@
             }
         }
 
-        & [data-icon]:not([hidden]) {
-            display: flex;
-        }
     }
 
     .audio-options {
@@ -1869,7 +1909,7 @@
             inset-block: 0;
             inset-inline-start: 0;
             inline-size: var(--speed-width);
-            border: 1px solid var(--ink);
+            border: 1px solid var(--blue);
             background: var(--paper-deep);
             content: '';
             pointer-events: none;
@@ -1922,6 +1962,7 @@
         }
 
         & input:checked + span {
+            color: var(--blue);
             font-weight: 600;
         }
 

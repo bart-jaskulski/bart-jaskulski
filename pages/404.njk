@@ -13,10 +13,10 @@ hideBack: true
     </h1>
     <footer>
         <nav class="routes" aria-label="Return to living content">
-            <a href="/">Home ↗</a>
-            <a href="/#work">Work ↗</a>
-            <a href="/writings/">Writing ↗</a>
-            <a href="mailto:{{ site.email }}">Contact ↗</a>
+            <a href="/">Home <span class="link-arrow" aria-hidden="true">↗</span></a>
+            <a href="/#work">Work <span class="link-arrow" aria-hidden="true">↗</span></a>
+            <a href="/writings/">Writing <span class="link-arrow" aria-hidden="true">↗</span></a>
+            <a href="mailto:{{ site.email }}">Contact <span class="link-arrow" aria-hidden="true">↗</span></a>
         </nav>
         {% set markClass = "seal" %}
         {% include "mark.njk" %}

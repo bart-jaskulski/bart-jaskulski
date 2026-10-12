@@ -72,8 +72,7 @@ class AudioLog extends HTMLElement {
             seek.value = currentTime;
             seek.setAttribute("aria-valuetext", `${elapsed} of ${total} at ${audio.playbackRate} times speed`);
             clock.textContent = duration ? `${elapsed} / ${total}` : initialClock.replace("0:00", elapsed);
-            button.querySelector('[data-icon="play"]').hidden = !audio.paused;
-            button.querySelector('[data-icon="pause"]').hidden = audio.paused;
+            button.dataset.playing = String(!audio.paused);
             button.setAttribute("aria-label", `${audio.paused ? "Play" : "Pause"} ${audio.getAttribute("aria-label")}`);
             if (session && activeAudio === audio) {
                 session.playbackState = audio.ended ? "none" : audio.paused ? "paused" : "playing";

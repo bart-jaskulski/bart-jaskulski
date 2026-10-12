@@ -57,7 +57,7 @@
             <search><form action="/search/" method="get"><input id="writing-search" name="q" type="search"
                     aria-label="Search" placeholder="Search" autocomplete="off" spellcheck="false"></form></search>
         </div>{% elif page.url != '/' and not hideBack %}<a
-            class="back" href="/" aria-label="Back to home">← Home</a>{% endif %}</header>
+            class="back" href="/" aria-label="Back to home"><span class="link-arrow" aria-hidden="true">←</span> Home</a>{% endif %}</header>
     <main id="main">{{ content | safe }}</main>
     <footer>
         <span>{{ site.name }}</span>
