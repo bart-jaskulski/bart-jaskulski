@@ -1,6 +1,6 @@
 # Doom coding
 
-Haven't been long since my [declaration not to use mobile agents](../mobile-agents.md), when I broke out and started to SSH into my always-on Mac.
+Haven't been long since my [declaration not to use mobile agents](./mobile-agents.md), when I broke out and started to SSH into my always-on Mac.
 
 I still don't like the idea, and the name: [doom-coding](https://github.com/rberg27/doom-coding). But I followed the setup and now can ping my codex or whatever to write thousands of lines of code when I walk the dogs... I'm feeling bad about this, though I felt even worse about the idea of the passing time. Constantly subjected to the sensation of subproductivity, while bursting with ideas.
 
